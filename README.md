@@ -1,3 +1,5 @@
+[![Quality gate status](https://sonarcloud.io/api/project_badges/measure?project=actionable-evidence_sonarqube-zap-plugin&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=actionable-evidence_sonarqube-zap-plugin)
+
 # SonarQube OWASP ZAP Plugin
 
 <img width="1674" height="958" alt="zap html" src="https://github.com/user-attachments/assets/a66010e8-3942-490d-b6b3-7fa5a0e86047" />
