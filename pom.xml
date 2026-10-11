@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.sonar</groupId>
+  <artifactId>sonar-zap-plugin</artifactId>
+  <version>26.1.0</version>
+  <packaging>sonar-plugin</packaging>
+
+  <name>SonarQube OWASP ZAP Plugin</name>
+  <description>
+    Imports OWASP ZAP reports (JSON or XML) into SonarQube as external issues
+    and shows the ZAP HTML report on a project page.
+  </description>
+
+  <licenses>
+    <license>
+      <name>Apache-2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>17</maven.compiler.release>
+
+    <sonar.projectKey>sonarqube-zap-plugin</sonar.projectKey>
+
+    <!-- Targets SonarQube Server 2026.1 LTA / Community Build 26.1 -->
+    <sonar.plugin.api.version>13.4.3.4290</sonar.plugin.api.version>
+    <sonar.plugin.api.impl.version>26.1.0.118079</sonar.plugin.api.impl.version>
+    <jackson.version>2.18.9</jackson.version>
+    <junit.version>5.11.4</junit.version>
+  </properties>
+
+  <dependencies>
+    <!-- Provided by the server at runtime, must NOT be bundled -->
+    <dependency>
+      <groupId>org.sonarsource.api.plugin</groupId>
+      <artifactId>sonar-plugin-api</artifactId>
+      <version>${sonar.plugin.api.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.sonarsource.sonarqube</groupId>
+      <artifactId>sonar-plugin-api-impl</artifactId>
+      <version>${sonar.plugin.api.impl.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>3.26.3</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>${project.artifactId}-${project.version}</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
+        <artifactId>sonar-packaging-maven-plugin</artifactId>
+        <version>1.23.0.740</version>
+        <extensions>true</extensions>
+        <configuration>
+          <pluginKey>zap</pluginKey>
+          <pluginName>OWASP ZAP</pluginName>
+          <pluginClass>com.sonar.zap.ZapPlugin</pluginClass>
+          <sonarLintSupported>false</sonarLintSupported>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.5.2</version>
+      </plugin>
+    </plugins>
+  </build>
+</project>

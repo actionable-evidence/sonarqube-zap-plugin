@@ -1,0 +1,64 @@
+{
+  "@programName": "ZAP",
+  "@version": "2.15.0",
+  "@generated": "Sat, 11 Oct 2026 10:00:00",
+  "site": [
+    {
+      "@name": "http://localhost:8080",
+      "@host": "localhost",
+      "@port": "8080",
+      "@ssl": "false",
+      "alerts": [
+        {
+          "pluginid": "10038",
+          "alertRef": "10038-1",
+          "alert": "Content Security Policy (CSP) Header Not Set",
+          "name": "Content Security Policy (CSP) Header Not Set",
+          "riskcode": "2",
+          "confidence": "3",
+          "riskdesc": "Medium (High)",
+          "desc": "<p>CSP is an added layer of security.</p>",
+          "instances": [
+            { "uri": "http://localhost:8080/", "method": "GET", "param": "", "attack": "", "evidence": "" },
+            { "uri": "http://localhost:8080/login", "method": "GET", "param": "", "attack": "", "evidence": "" }
+          ],
+          "count": "2",
+          "solution": "<p>Configure the CSP header.</p>",
+          "otherinfo": "",
+          "reference": "<p>https://developer.mozilla.org/docs/Web/HTTP/CSP</p>",
+          "cweid": "693",
+          "wascid": "15"
+        },
+        {
+          "pluginid": "40012",
+          "alertRef": "40012",
+          "alert": "Cross Site Scripting (Reflected)",
+          "name": "Cross Site Scripting (Reflected)",
+          "riskcode": "3",
+          "confidence": "2",
+          "desc": "<p>Reflected XSS.</p>",
+          "instances": [
+            { "uri": "http://localhost:8080/search", "method": "GET", "param": "q", "attack": "<script>alert(1)</script>", "evidence": "<script>alert(1)</script>" }
+          ],
+          "solution": "<p>Encode output.</p>",
+          "reference": "",
+          "cweid": 79,
+          "wascid": 8
+        },
+        {
+          "pluginid": "10015",
+          "alert": "Re-examine Cache-control Directives",
+          "riskcode": "0",
+          "confidence": "1",
+          "desc": "<p>Cache-control.</p>",
+          "instances": [],
+          "solution": "",
+          "reference": "",
+          "cweid": "525",
+          "wascid": "13"
+        }
+      ]
+    },
+    { "@name": "http://empty.example", "@host": "empty.example", "alerts": [] }
+  ]
+}

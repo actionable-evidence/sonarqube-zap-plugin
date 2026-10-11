@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<OWASPZAPReport version="2.15.0" generated="Sat, 11 Oct 2026 10:00:00">
+  <site name="http://localhost:8080" host="localhost" port="8080" ssl="false">
+    <alerts>
+      <alertitem>
+        <pluginid>40012</pluginid>
+        <alertRef>40012</alertRef>
+        <alert>Cross Site Scripting (Reflected)</alert>
+        <name>Cross Site Scripting (Reflected)</name>
+        <riskcode>3</riskcode>
+        <confidence>2</confidence>
+        <desc>&lt;p&gt;Reflected XSS.&lt;/p&gt;</desc>
+        <instances>
+          <instance>
+            <uri>http://localhost:8080/search</uri>
+            <method>GET</method>
+            <param>q</param>
+            <attack>x</attack>
+            <evidence>x</evidence>
+          </instance>
+        </instances>
+        <solution>&lt;p&gt;Encode output.&lt;/p&gt;</solution>
+        <reference></reference>
+        <cweid>79</cweid>
+        <wascid>8</wascid>
+      </alertitem>
+    </alerts>
+  </site>
+  <site name="http://empty.example" host="empty.example"/>
+</OWASPZAPReport>
