@@ -1,5 +1,7 @@
 # SonarQube OWASP ZAP Plugin
 
+<img width="1674" height="958" alt="zap html" src="https://github.com/user-attachments/assets/a66010e8-3942-490d-b6b3-7fa5a0e86047" />
+
 Imports [OWASP ZAP](https://www.zaproxy.org/) scan results into SonarQube as **external issues** and shows the ZAP
 HTML report on an **OWASP ZAP** project page.
 
